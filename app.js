@@ -11,15 +11,19 @@ const game = () => {
     const computerOptions = ["rock", "paper", "scissors"];
 
     playerOptions.forEach((option) => {
+      console.log(option);
       option.addEventListener("click", function () {
+        console.log("button click");
         const movesLeft = document.querySelector(".movesleft");
         moves++;
         movesLeft.innerText = `Moves Left: ${10 - moves}`;
 
+        console.log(">> classname", option.className);
+
         const choiceNumber = Math.floor(Math.random() * 3);
         const computerChoice = computerOptions[choiceNumber];
 
-        winner(this.innerText, computerChoice);
+        winner(option.className, computerChoice);
 
         if (moves == 10) {
           gameOver(playerOptions, movesLeft);
